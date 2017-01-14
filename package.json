@@ -38,6 +38,7 @@
     "bootstrap": "^3.3.7",
     "classname": "^0.0.0",
     "immutable": "^3.8.1",
+    "normalize.css": "^5.0.0",
     "pretender": "^1.4.2",
     "react": "^15.4.1",
     "react-bootstrap": "^0.30.3",
