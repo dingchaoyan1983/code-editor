@@ -1,0 +1,13 @@
+//introduce the bootstrap
+@import '~node_modules/bootstrap/dist/css/bootstrap.css';
+
+// components related scss started...
+@import 'components/header';
+@import 'components/code-editor';
+// components related scss end...
+
+//app base css
+#container {
+    width: 960px;
+    margin: 0 auto;
+}

@@ -5,6 +5,7 @@ import {Provider} from 'react-redux';
 
 import Router from './router';
 import rootReducer from './redux';
+import '../assets/index.scss';
 
 if (process.env.NODE_ENV === 'development') {
     require('./mock');
@@ -14,6 +15,6 @@ const ROOT= 'container';
 const store = createStore(rootReducer);
 
 ReactDOM.render(
-    <Provider>
+    <Provider store={store}>
         <Router/>
     </Provider>, document.getElementById(ROOT));

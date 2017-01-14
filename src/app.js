@@ -3,7 +3,7 @@ import Header from './components/header';
 
 export default function(props) {
     return <div>
-            <Header/>
+            <Header {...props}/>
             {props.children}
            </div>
 }
