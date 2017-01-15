@@ -1,0 +1,9 @@
+.folder-list {
+    border: 1px solid $border-color;
+    color: #888;
+}
+
+.folder-list__icon:before {
+    color: #337ab7;
+    padding-right: 5px;
+}
