@@ -6,7 +6,7 @@ export default function(props) {
     const {pathname} = props.location;
     console.log(pathname);
     return <div>
-                <CodeEditor/>
                 <FolderList/>
+                <CodeEditor/>
            </div>
 }

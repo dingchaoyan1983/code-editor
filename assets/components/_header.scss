@@ -1,4 +1,9 @@
 .editor-navigate {
     font-weight: bold;
     font-size: 18px;
+    margin-bottom: 0;
+    border: 1px solid $border-color;
+    border-bottom: none;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
 }

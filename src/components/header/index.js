@@ -7,8 +7,9 @@ import {Link} from 'react-router';
 import Path from 'path';
 
 export default function(props) {
-    const {splat=''} = props.params;
+    const { splat = '' } = props.params;
     const paths = splat.split('/');
+
     const breadcrumbs = paths.map((path, index) => {
         return {
             text: path,
