@@ -1,0 +1,31 @@
+.projects {
+    padding: 0;
+    margin: 0;
+}
+
+.project {
+    padding: 10px 0;
+    list-style: none;
+    border-bottom: 1px solid #e5e5e5;
+
+    h3 {
+        padding: 5px 0;
+        margin: 0;
+    }
+}
+
+.project__description {
+    color: $color-gray;
+    margin: 10px 0;
+}
+
+.project__authors {
+    color: $color-gray;
+    font-size: 12px;
+}
+
+.project__createTime {
+    color: $color-gray;
+    font-size: 12px;
+    text-align: right;
+}
