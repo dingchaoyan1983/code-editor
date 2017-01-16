@@ -1,7 +1,6 @@
 import generator from './generator';
 import {projectList} from './projects';
 
-
 export default function() {
     this.get('/api/projects/:projectId/folders', function(req, res) {
         const project = projectList.filter((project) => project.id === req.params.projectId);

@@ -3,7 +3,7 @@ import { Router, Route, hashHistory, IndexRoute} from 'react-router';
 
 import App from './app';
 import MainBody from './components/mainbody';
-import Projects from './components/mainbody/projects';
+import Projects from './components/container/projects';
 
 export default function(props) {
     return <Router history={hashHistory}>
