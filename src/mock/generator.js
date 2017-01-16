@@ -6,21 +6,31 @@ const extentionTypes = [EXTENTION_JAVA, EXTENTOION_JAVASCRIPT];
 
 console.log(Faker);
 
+function contributors() {
+    const contributors = [];
+
+    for(let i = 0; i < Faker.random.number({min: 1, max: 5}); i++) {
+        contributors.push([Faker.name.lastName(), Faker.name.firstName()].join('.'));
+    }
+
+    return contributors;
+}
+
 function project() {
     return {
         id: Faker.random.uuid(),
-        name: Faker.random.words(2),
-        description: Faker.random.words(20),
-        contributors: [1, 2, 3, 4, 5].map(() => [Faker.name.lastName(), Faker.name.firstName()].join('.')),
-        createTime: Faker.date.past(2016),
+        name: Faker.random.word(),
+        description: Faker.random.words(Faker.random.number({min: 15, max: 25})),
+        contributors: contributors(),
+        createTime: Faker.date.recent(200),
         type: PROJECT
     };
 }
 
-function projectList(count = 5) {
+function projectList() {
     let arr = [];
 
-    for(let i = 0; i < count; i++) {
+    for(let i = 0; i < Faker.random.number({min: 2, max: 5}); i++) {
         arr.push(project());
     }
 

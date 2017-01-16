@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'code-editor';
-  src:  url('fonts/code-editor.eot?4ukcd2');
-  src:  url('fonts/code-editor.eot?4ukcd2#iefix') format('embedded-opentype'),
-    url('fonts/code-editor.ttf?4ukcd2') format('truetype'),
-    url('fonts/code-editor.woff?4ukcd2') format('woff'),
-    url('fonts/code-editor.svg?4ukcd2#code-editor') format('svg');
+  src:  url('fonts/code-editor.eot?ueri2y');
+  src:  url('fonts/code-editor.eot?ueri2y#iefix') format('embedded-opentype'),
+    url('fonts/code-editor.ttf?ueri2y') format('truetype'),
+    url('fonts/code-editor.woff?ueri2y') format('woff'),
+    url('fonts/code-editor.svg?ueri2y#code-editor') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -29,5 +29,17 @@
 }
 .icon-folder:before {
   content: "\e92f";
+}
+.icon-clock:before {
+  content: "\e94e";
+}
+.icon-users:before {
+  content: "\e972";
+}
+.icon-rocket:before {
+  content: "\e9a5";
+}
+.icon-list2:before {
+  content: "\e9bb";
 }
 
