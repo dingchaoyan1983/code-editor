@@ -9,6 +9,8 @@ import App from './app';
 import MainBody from './components/container/main-body';
 import Projects from './components/container/projects';
 import { loadFolders } from './redux/folder';
+import { loadContent } from './redux/file';
+
 import { isFile } from './utils';
 
 const store = createStore(rootReducer, applyMiddleware(apiMiddleware));
@@ -20,7 +22,7 @@ export default function(props) {
                     <Route path="/" component={ App } >
                         <Route path="*" component={ MainBody } onEnter={({params: {splat=''}}={}) => {
                             if(isFile(splat)) {
-                                dispatch(loadFolders());
+                                dispatch(loadContent());
                             } else {
                                 dispatch(loadFolders());
                             }

@@ -7,3 +7,5 @@ export const EXTENTOION_JAVASCRIPT = 'js';
 
 export const SHOW_LOADING_SPINNER = 'loading-spinner/show';
 export const HIDE_LOADING_SPINNER = 'loading-spinner/hide';
+
+export const DELAY = 1000;

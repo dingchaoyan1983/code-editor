@@ -1,4 +1,5 @@
 import generator from './generator';
+import { DELAY } from 'src/utils';
 
 export const projectList = generator.projectList();
 
@@ -9,7 +10,7 @@ export default function() {
             {'content-type': 'application/json'},
             JSON.stringify({data: projectList})
         ];
-    });
+    }, DELAY);
 
     this.get('/api/projects/:id', function(req, res) {
         const project = projectList.filter((project) => project.id === req.params.id);
@@ -19,5 +20,5 @@ export default function() {
             {'content-type': 'application/json'},
             JSON.stringify({data: project})
         ]
-    })
+    }, DELAY);
 }

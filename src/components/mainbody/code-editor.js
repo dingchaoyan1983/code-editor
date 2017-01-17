@@ -10,5 +10,6 @@ const options = {
 	mode: 'javascript'
 }
 export default function(props) {
-    return <ReactCodemirror value={javascript} options={options}/>
+    const content = props.file.get('content');
+    return <ReactCodemirror value={content} options={options}/>
 }

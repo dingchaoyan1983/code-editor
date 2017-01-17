@@ -15,7 +15,7 @@ export default class extends PureComponent {
         let children = <FolderList {...this.props} splat={splat}/>;
 
         if (isFile(splat)) {
-            children = <CodeEditor/>;
+            children = <CodeEditor  {...this.props}/>;
         }
 
         return <div>
