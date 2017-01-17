@@ -15,11 +15,12 @@ export default function() {
 
     this.get('/api/projects/:projectId/folders/:folderId', function(req, res) {
         const project = projectList.filter((project) => project.id === req.params.id);
+        const folders = generator.folderList();
 
         return [
             200,
             {'content-type': 'application/json'},
-            JSON.stringify({data: project})
-        ]
+            JSON.stringify({data: folders})
+        ];
     })
 }

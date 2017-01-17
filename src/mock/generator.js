@@ -4,8 +4,6 @@ import {PROJECT, FOLDER, FILE, EXTENTION_JAVA, EXTENTOION_JAVASCRIPT} from '../c
 const types = [FOLDER, FILE];
 const extentionTypes = [EXTENTION_JAVA, EXTENTOION_JAVASCRIPT];
 
-console.log(Faker);
-
 function contributors() {
     const contributors = [];
 
@@ -37,14 +35,14 @@ function projectList() {
     return arr;
 }
 
-function folderList(count = Faker.random.number({min: 15, max: 20})) {
+function folderList(count = Faker.random.number({min: 10, max: 15})) {
     const arr = [];
 
     for(let i =0; i < count; i++){
         let o = {
             type: types[parseInt(Math.random() * 100 % types.length)],
-            modifiedBy: Faker.name.lastName(),
-            modifiedTime: Faker.date.past(2016)
+            modifiedBy: [Faker.name.lastName(), Faker.name.firstName()].join('.'),
+            modifiedTime: Faker.date.recent(200)
         }
 
         if(o.type === FOLDER) {

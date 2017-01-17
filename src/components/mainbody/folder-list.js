@@ -1,25 +1,14 @@
 import React from 'react';
-import { Link } from 'react-router';
+import FolderItem from './folder-item';
 
 export default function(props) {
+    const {folders, splat} = props;
+    
     return <table className="table table-hover folder-list">
             <tbody>
-                <tr>
-                    <td>
-                       <i className="icon icon-file-text folder-list__icon"/>
-                       <Link to="test/test/test/test/test.js">Otto</Link>    
-                    </td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                </tr> 
-                <tr>
-                    <td>
-                       <i className="icon icon-folder folder-list__icon"/>
-                       <Link to="test/test/test/test/test1">test1</Link>
-                    </td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                </tr>
+                {
+                    folders.map((folder, index) => <FolderItem key={index} {...folder} splat={splat}/>)
+                }
             </tbody>
            </table>
 }
