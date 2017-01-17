@@ -1,5 +1,5 @@
 import generator from './generator';
-import { DELAY } from 'src/utils';
+import { DELAY } from 'src/constants';
 
 export const projectList = generator.projectList();
 

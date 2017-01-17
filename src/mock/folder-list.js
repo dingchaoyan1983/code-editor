@@ -1,6 +1,6 @@
 import generator from './generator';
 import {projectList} from './projects';
-import { DELAY } from 'src/utils';
+import { DELAY } from 'src/constants';
 
 export default function() {
     this.get('/api/projects/:projectId/folders', function(req, res) {
@@ -34,5 +34,5 @@ export default function() {
             {'content-type': 'application/json'},
             JSON.stringify({data: content})
         ];
-    })
+    }, DELAY)
 }

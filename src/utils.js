@@ -1,6 +1,6 @@
 import Path from 'path';
 
-const DELIMITER = '/';DELIMITER
+const DELIMITER = '/';
 
 export function extname(splat = '') {
     return Path.extname(splat);

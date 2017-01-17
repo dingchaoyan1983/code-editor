@@ -1,7 +1,8 @@
 import React from 'react';
+import classname from 'classname';
 
 export default function (props) {
     const {shown = false} = props.loadingSpinner.toJS();
-    let dom = shown ? <div className="loading-spinner"/> : null;
-    return dom;
+    return <div className={classname('loading-spinner', shown ? 'show' : '')}/>
+    
 }
