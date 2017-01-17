@@ -1,5 +1,6 @@
 import Promise from 'es6-promise';
 import $ from 'jquery';
+import { SHOW_LOADING_SPINNER, HIDE_LOADING_SPINNER } from '../constants';
 
 let livingAjax = 0;
 
@@ -15,7 +16,8 @@ export default function apiMiddleware({ dispatch }) {
     function liveAjaxCountUp() {
 
         if (livingAjax === 0) {
-            dispatch({type: 'SHOW_LOADING'});
+            document.body.classList.add('hide-scrollbar');
+            dispatch({type: SHOW_LOADING_SPINNER});
         }
 
         livingAjax++;
@@ -26,7 +28,8 @@ export default function apiMiddleware({ dispatch }) {
             livingAjax--;
 
             if(livingAjax === 0) {
-                dispatch({type: 'HIDE_LOADING'});
+                document.body.classList.remove('hide-scrollbar');
+                dispatch({type: HIDE_LOADING_SPINNER});
             }
         }, 0);
     }
