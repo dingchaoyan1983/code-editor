@@ -6,8 +6,12 @@
     border-bottom: none;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
+
+    .icon {
+        font-size: 14px
+    }
 }
 
-.home-link{
+.linkable{
     color: #337ab7;
 }
