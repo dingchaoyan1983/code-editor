@@ -6,6 +6,22 @@
 
     .cm-s-default {
         font-family: 'Operator Mono', 'Source Sans Pro', Menlo, Monaco, Consolas, Courier New, monospace;
-        height: 100%;
+        height: 90vh;
     }
+
+    &.readonly {
+        .CodeMirror {
+           background: rgba(204, 204, 204, 0.4);
+        }
+    }
+}
+
+.editor-toolbar__wrapper {
+    border: 1px solid $border-color;
+    border-bottom: none;
+    padding: 5px 0;
+}
+
+.editor-toolbar {
+    text-align: right;
 }
