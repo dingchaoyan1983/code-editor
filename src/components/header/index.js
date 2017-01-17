@@ -6,8 +6,13 @@ import { splitPath, isFile } from 'src/utils';
 
 export default function(props) {
     const { splat = '' } = props.params;
-    const paths = splitPath(splat);
+    let headerDom = null;
 
+    if (splat === '') {
+        return headerDom;
+    }
+    
+    const paths = splitPath(splat);
     const breadcrumbs = paths.map((path, index) => {
         return {
             text: path,
@@ -17,22 +22,23 @@ export default function(props) {
         }
     });
 
-    console.log(breadcrumbs);
-    return <Breadcrumb className="editor-navigate">
-                 <Breadcrumb.Item active={true} key={-1}>
-                    <i className="icon icon-home3 linkable"/>
-                    <Link to="/">Home</Link>
-                 </Breadcrumb.Item>
-                {
-                    breadcrumbs.map(({file, linkable, route, text}, index) =>
-                        <Breadcrumb.Item active={true} key={index}>
-                            <i className={classname('icon', file ? 'icon-file-text' : 'icon-folder', linkable ? 'linkable' : '')}/>
-                            {
-                                linkable ? <Link to={route}>{text}</Link> : text
-                            }
-                        </Breadcrumb.Item>
-                    )
-                }
-          </Breadcrumb>
-           
+    headerDom =  <Breadcrumb className="editor-navigate">
+                    <Breadcrumb.Item active={true} key={-1}>
+                        <i className="icon icon-home3 linkable"/>
+                        <Link to="/">Home</Link>
+                    </Breadcrumb.Item>
+                    {
+                        breadcrumbs.map(({file, linkable, route, text}, index) =>
+                            <Breadcrumb.Item active={true} key={index}>
+                                <i className={classname('icon', file ? 'icon-file-text' : 'icon-folder', linkable ? 'linkable' : '')}/>
+                                {
+                                    linkable ? <Link to={route}>{text}</Link> : text
+                                }
+                            </Breadcrumb.Item>
+                        )
+                    }
+                </Breadcrumb>
+    
+    return headerDom;
 }
+
