@@ -1,7 +1,6 @@
 import {connect} from 'react-redux';
 
 import Projects from '../mainbody/projects';
-import { loadProjects } from 'src/redux/project';
 
 function mapStatesToProps({projects}) {
     return {
@@ -9,6 +8,4 @@ function mapStatesToProps({projects}) {
     };
 }
 
-export default connect(mapStatesToProps, {
-    loadProjects
-})(Projects);
+export default connect(mapStatesToProps)(Projects);

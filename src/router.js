@@ -3,13 +3,15 @@ import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 import apiMiddleware from './redux/api-middleware';
 import {createStore, applyMiddleware} from 'redux';
 import {Provider} from 'react-redux';
-import rootReducer from './redux';
+import rootReducer from './redux/reducers';
 
 import App from './app';
 import MainBody from './components/container/main-body';
 import Projects from './components/container/projects';
-import { loadFolders } from './redux/folder';
-import { loadContent } from './redux/file';
+
+import { loadFolders } from './redux/reducers/folder';
+import { loadContent } from './redux/reducers/file';
+import { loadProjects } from './redux/reducers/project';
 
 import { isFile } from './utils';
 
@@ -27,7 +29,7 @@ export default function(props) {
                                 dispatch(loadFolders());
                             }
                         }}/>
-                        <IndexRoute component={ Projects }/>
+                        <IndexRoute component={ Projects } onEnter = {() => dispatch(loadProjects())}/>
                     </Route>
                 </Router>
             </Provider>

@@ -1,5 +1,5 @@
 import Immutable from 'immutable';
-import { SHOW_LOADING_SPINNER, HIDE_LOADING_SPINNER } from '../constants';
+import { SHOW_LOADING_SPINNER, HIDE_LOADING_SPINNER } from 'src/constants';
 
 const initState = {
     shown: false
