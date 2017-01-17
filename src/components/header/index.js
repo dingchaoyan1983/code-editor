@@ -16,8 +16,11 @@ export default function(props) {
     });
 
     return <Breadcrumb className="editor-navigate">
+                 <Breadcrumb.Item active={true} key={-1}>
+                    <Link to="/">Home</Link>
+                 </Breadcrumb.Item>
                 {
-                    breadcrumbs.map((item, index) => 
+                    breadcrumbs.map((item, index) =>
                         <Breadcrumb.Item active={true} key={index}>
                             {
                                 item.linkable ? <Link to={item.route}>{item.text}</Link> : item.text
