@@ -5,4 +5,3 @@ export default function (props) {
     let dom = shown ? <div className="loading-spinner"/> : null;
     return dom;
 }
-
