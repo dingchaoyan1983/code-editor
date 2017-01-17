@@ -13,7 +13,7 @@ import { loadFolders } from './redux/reducers/folder';
 import { loadContent } from './redux/reducers/file';
 import { loadProjects } from './redux/reducers/project';
 
-import { isFile } from './utils';
+import { isFile, extname } from './utils';
 
 const store = createStore(rootReducer, applyMiddleware(apiMiddleware));
 const {dispatch} = store;
@@ -24,7 +24,8 @@ export default function(props) {
                     <Route path="/" component={ App } >
                         <Route path="*" component={ MainBody } onEnter={({params: {splat=''}}={}) => {
                             if(isFile(splat)) {
-                                dispatch(loadContent());
+                                console.log(extname(splat))
+                                dispatch(loadContent(extname(splat)));
                             } else {
                                 dispatch(loadFolders());
                             }

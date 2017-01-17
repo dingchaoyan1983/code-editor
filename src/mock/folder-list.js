@@ -26,8 +26,9 @@ export default function() {
     }, DELAY);
 
     this.get('/api/projects/:projectId/folders/:folderId/files/:fileId', function(req, res) {
+        const {extname = '.js'} = req.queryParams;
         const project = projectList.filter((project) => project.id === req.params.id);
-        const content = generator.fileContent('.js');
+        const content = generator.fileContent(extname.toLowerCase());
 
         return [
             200,

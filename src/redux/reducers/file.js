@@ -4,10 +4,11 @@ const initState = {
     content: ''
 };
 
-export function loadContent(parentId) {
+export function loadContent(extname) {
     return {
         API_CALL: true,
         url: `/api/projects/projectId/folders/folderId/files/fileId`,
+        data: {extname},
         types: [,LOAD_SUCC,]
     }
 }
