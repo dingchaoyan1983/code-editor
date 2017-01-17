@@ -1,5 +1,5 @@
 ## code editor
-** Github look like code editor.just for fun. 
+**Github look like** code editor. *JUST FOR FUN*. 
 
 ## Setup
 
