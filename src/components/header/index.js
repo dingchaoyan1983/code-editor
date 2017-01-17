@@ -17,6 +17,7 @@ export default function(props) {
 
     return <Breadcrumb className="editor-navigate">
                  <Breadcrumb.Item active={true} key={-1}>
+                    <i className="icon icon-home3 home-link"/>
                     <Link to="/">Home</Link>
                  </Breadcrumb.Item>
                 {
