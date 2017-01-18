@@ -9,7 +9,12 @@ import { splitPath, isFile } from 'src/utils';
 
 export default function(props) {
     const { splat = '' } = props.params;
-    let headerDom = null;
+    let headerDom = <div className="docs-header" id="content">
+                        <div>
+                            <h1>Tiny Code</h1>
+                            <p></p>
+                        </div>
+                    </div>;
 
     if (splat === '') {
         return headerDom;
@@ -25,23 +30,30 @@ export default function(props) {
         }
     });
 
-    headerDom =  <Breadcrumb className="editor-navigate">
-                    <Breadcrumb.Item active={true} key={-1}>
-                        <i className="icon icon-home3 linkable"/>
-                        <Link to="/">Home</Link>
-                    </Breadcrumb.Item>
-                    {
-                        breadcrumbs.map(({file, linkable, route, text}, index) =>
-                            <Breadcrumb.Item active={true} key={index}>
-                                <i className={classname('icon', file ? 'icon-file-text' : 'icon-folder', linkable ? 'linkable' : '')}/>
-                                {
-                                    linkable ? <Link to={route}>{text}</Link> : text
-                                }
-                            </Breadcrumb.Item>
-                        )
-                    }
-                </Breadcrumb>
+    headerDom = <div>
+                    <div className="docs-header sub">
+                        <div>
+                            <h1>Tiny Code</h1>
+                            <p></p>
+                        </div>
+                     </div>
+                     <Breadcrumb className="editor-navigate">
+                     <Breadcrumb.Item active={true} key={-1}>
+                         <i className="icon icon-home3 linkable"/>
+                         <Link to="/">Home</Link>
+                     </Breadcrumb.Item>
+                        {
+                            breadcrumbs.map(({file, linkable, route, text}, index) =>
+                                <Breadcrumb.Item active={true} key={index}>
+                                    <i className={classname('icon', file ? 'icon-file-text' : 'icon-folder', linkable ? 'linkable' : '')}/>
+                                    {
+                                        linkable ? <Link to={route}>{text}</Link> : text
+                                    }
+                                </Breadcrumb.Item>
+                            )
+                        }
+                     </Breadcrumb>
+                </div>
     
     return headerDom;
 }
-
