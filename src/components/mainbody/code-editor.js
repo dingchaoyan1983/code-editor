@@ -6,8 +6,10 @@ import 'codemirror/addon/scroll/simplescrollbars.js';
 import 'codemirror/addon/scroll/simplescrollbars.css';
 import Col from 'react-bootstrap/lib/Col';
 import Button from 'react-bootstrap/lib/Button';
+import Modal from 'react-bootstrap/lib/Modal';
 import classname from 'classname';
-import { MODIFY, SAVE } from 'src/constants';
+import { MODIFY, SAVE, VIEW_DIFF } from 'src/constants';
+import CodeDiff from './code-diff';
 
 const { PureComponent } = React;
 
@@ -29,11 +31,14 @@ export default class extends PureComponent {
 
         this.state = {
             readOnly: true,
-            code: props.file.get('content')
+            code: props.file.get('content'),
+            showDiff: false
         }
 
         this.onClick = this.onClick.bind(this);
         this.updateCode = this.updateCode.bind(this);
+        this.showDiff = this.showDiff.bind(this);
+        this.hideDiff = this.hideDiff.bind(this);
     }
 
     componentWillReceiveProps(props) {
@@ -49,9 +54,25 @@ export default class extends PureComponent {
     render() {
         this.options.readOnly = this.state.readOnly;
 
+        let modal = <Modal.Dialog dialogClassName="diff-view__modal">
+                        <Modal.Header>
+                            <Modal.Title>对比</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>
+                            <CodeDiff curr={this.state.code} prev={''}/>
+                        </Modal.Body>
+                        <Modal.Footer>
+                            <Button onClick={this.hideDiff}>Close</Button>
+                        </Modal.Footer>
+                    </Modal.Dialog>
+
         return <div>
                   <div className="clearfix editor-toolbar__wrapper">
                       <Col sm={3} smOffset={9} className="editor-toolbar">
+                        <Button bsSize="xs" bsStyle="primary" onClick={this.showDiff}>
+                            <i className={classname('icon',  'icon-pencil')}/>
+                            { VIEW_DIFF }
+                        </Button>
                         <Button bsSize="xs" bsStyle="primary" onClick={this.onClick}>
                             <i className={classname('icon', this.state.readOnly ? 'icon-pencil' : 'icon-floppy-disk')}/>
                             { this.state.readOnly ? MODIFY : SAVE }
@@ -59,6 +80,9 @@ export default class extends PureComponent {
                       </Col>
                   </div>
                   <ReactCodemirror onChange={this.updateCode} value={this.state.code} options={this.options} className={classname(this.state.readOnly ? 'readonly' : '')}/>
+                  {
+                      this.state.showDiff ? modal : null
+                  }
                </div>
     }
 
@@ -80,6 +104,18 @@ export default class extends PureComponent {
         this.setState({
             code: newCode
         })
+    }
+
+    showDiff() {
+        this.setState({
+            showDiff: true
+        });
+    }
+
+    hideDiff() {
+        this.setState({
+            showDiff: false
+        });
     }
 }
 

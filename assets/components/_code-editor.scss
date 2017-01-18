@@ -25,3 +25,15 @@
 .editor-toolbar {
     text-align: right;
 }
+
+.ReactDiffView {
+    .cm-s-default {
+        font-family: 'Operator Mono', 'Source Sans Pro', Menlo, Monaco, Consolas, Courier New, monospace;
+        height: 90vh;
+    }
+}
+
+.diff-view__modal {
+    width: 100%;
+    height: 100vh;
+}
