@@ -33,7 +33,33 @@ export default function() {
         return [
             200,
             {'content-type': 'application/json'},
-            JSON.stringify({data: content})
+            JSON.stringify({data: {code: content , extname}})
+        ];
+    }, DELAY);
+
+    this.put('/api/projects/:projectId/folders/:folderId/files/:fileId', function(req, res) {
+        const {extname, code} = req.requestBody;
+
+        try {
+            generator.modifyCode({
+                extname, 
+                code
+            });
+        } catch(e) {
+            return [
+                400,
+                {'content-type': 'application/json'},
+                JSON.stringify({data: e})
+            ];
+        }
+
+        const statusCodes = [200, 200, 200, 200, 200, 200, 200, 200, 200, 200];
+        const randomIndex = parseInt(Math.random() * statusCodes.length);
+
+        return [
+            statusCodes[randomIndex],
+            {'content-type': 'application/json'},
+            JSON.stringify({data: {code, extname}})
         ];
     }, DELAY)
 }

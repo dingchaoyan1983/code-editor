@@ -38,16 +38,17 @@ export default function apiMiddleware({ dispatch }) {
     return function (next) {
         return function(action) {
             if(action.API_CALL) {
-                const {url, data = {}, type = 'GET', types: [REQ_START = 'dummy', REQ_SUCC = 'dummy', REQ_FAIL = 'dummy']} = action;
+                const {url, data = {}, method = 'GET', types: [REQ_START = 'dummy', REQ_SUCC = 'dummy', REQ_FAIL = 'dummy']} = action;
 
                 liveAjaxCountUp();
                 dispatch({type: REQ_START});
 
                 const promise = Promise.resolve($.ajax({
                     url,
-                    type,
+                    method,
                     data,
-                    dataType: 'json'
+                    dataType: 'json',
+                    processData: method.trim().toLowerCase() === 'get'
                 }));
 
                 promise.then(function({data}){

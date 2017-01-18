@@ -1,7 +1,8 @@
 import Immutable from 'immutable';
 
 const initState = {
-    content: ''
+    content: '',
+    extname: ''
 };
 
 export function loadContent(extname) {
@@ -13,12 +14,30 @@ export function loadContent(extname) {
     }
 }
 
+export function modifyContent(extname, code) {
+    return {
+        API_CALL: true,
+        method: 'PUT',
+        url: `/api/projects/projectId/folders/folderId/files/fileId`,
+        data: {
+            extname,
+            code
+        },
+        types: [,LOAD_SUCC,]
+    }
+}
+
 const LOAD_SUCC = 'file/load_succ';
 
 export default function(state = Immutable.fromJS(initState), action) {
     switch(action.type) {
         case LOAD_SUCC:   
-            return state.set('content', action.payload);
+            state = state.set('content', '');
+            return state.withMutations(function (state) {
+                        state.set('content', action.payload.code);
+                        state.set('extname', action.payload.extname);
+                        return state;
+                   });
         default:
             return state;
     }

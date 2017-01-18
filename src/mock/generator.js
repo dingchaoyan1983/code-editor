@@ -74,9 +74,26 @@ function fileContent(extname) {
     return content;
 }
 
+function modifyCode({extname = '',  code: codeContent = ''}) {
+    extname = extname.trim().toLowerCase();
+
+    if (['.js', '.java'].indexOf(extname) === -1) {
+        throw new Error('unrecognized file');
+    }
+
+    if ('.js' === extname) {
+        code.js = codeContent;
+    }
+
+    if ('.java' === extname) {
+        code.java = codeContent;
+    }
+}
+
 export default {
     project,
     projectList,
     folderList,
-    fileContent
+    fileContent,
+    modifyCode
 }

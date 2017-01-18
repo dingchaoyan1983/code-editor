@@ -1,5 +1,5 @@
 import React from 'react';
-import CodeEditor from './code-editor';
+import CodeEditor from '../container/code-editor';
 import FolderList from './folder-list';
 import { isFile } from '../../utils';
 

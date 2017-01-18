@@ -19,8 +19,8 @@ const options = {
 
 export default class extends PureComponent {
     constructor(props, context) {
+       
         super(props, context);
-
         this.options = {
             lineNumbers: true,
             mode: 'javascript',
@@ -66,6 +66,13 @@ export default class extends PureComponent {
         let state = !this.state.readOnly;
         this.setState({
             readOnly: state
+        }, () => {
+            if (this.state.readOnly) {
+                this.props.modifyContent(this.props.file.get('extname'), this.state.code)
+                .catch(() => {
+                    this.props.loadContent(this.props.file.get('extname'));
+                });
+            }
         });
     }
 

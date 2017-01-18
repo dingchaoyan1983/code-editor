@@ -27,7 +27,6 @@ export default function(props) {
                     <Route path="/" component={ App } >
                         <Route path="*" component={ MainBody } onEnter={({params: {splat=''}}={}) => {
                             if(isFile(splat)) {
-                                console.log(extname(splat))
                                 dispatch(loadContent(extname(splat)));
                             } else {
                                 dispatch(loadFolders());
