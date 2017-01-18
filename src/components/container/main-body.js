@@ -1,3 +1,6 @@
+/**
+ * body container
+ */
 import {connect} from 'react-redux';
 import MainBody from '../mainbody';
 

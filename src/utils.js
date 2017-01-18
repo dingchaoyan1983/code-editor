@@ -1,3 +1,6 @@
+/**
+ * some utils
+ */
 import Path from 'path';
 
 const DELIMITER = '/';

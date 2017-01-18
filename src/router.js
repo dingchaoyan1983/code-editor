@@ -1,3 +1,6 @@
+/**
+ * Router configrations
+ */
 import React from 'react';
 import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 import apiMiddleware from './redux/api-middleware';

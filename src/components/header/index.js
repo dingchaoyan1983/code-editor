@@ -1,3 +1,6 @@
+/**
+ * Header component
+ */
 import React from 'react';
 import Breadcrumb from 'react-bootstrap/lib/Breadcrumb';
 import { Link } from 'react-router';

@@ -1,3 +1,6 @@
+/**
+ * project view container
+ */
 import {connect} from 'react-redux';
 
 import Projects from '../mainbody/projects';

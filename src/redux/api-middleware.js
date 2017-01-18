@@ -4,7 +4,8 @@ import { SHOW_LOADING_SPINNER, HIDE_LOADING_SPINNER } from '../constants';
 
 let livingAjax = 0;
 
-//This a redux api call middleware, if you want to trigger this middleware, you must keep the action foramt like 
+//This a redux api call middleware, if you want to trigger this middleware, 
+//you must keep the action foramt like this:
 // {
 //    API_CALL: true, {must specify}
 //    url, '',{must specify}

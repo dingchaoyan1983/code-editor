@@ -7,9 +7,8 @@ import 'codemirror/addon/scroll/simplescrollbars.css';
 import Col from 'react-bootstrap/lib/Col';
 import Button from 'react-bootstrap/lib/Button';
 import classname from 'classname';
+import { MODIFY, SAVE } from 'src/constants';
 
-const MODIFY= '修改';
-const SAVE = '保存';
 const { PureComponent } = React;
 
 const options = {
@@ -29,14 +28,25 @@ export default class extends PureComponent {
         };
 
         this.state = {
-            readOnly: true
+            readOnly: true,
+            code: props.file.get('content')
         }
 
         this.onClick = this.onClick.bind(this);
+        this.updateCode = this.updateCode.bind(this);
+    }
+
+    componentWillReceiveProps(props) {
+        const code = props.file.get('content');
+
+        if (code !== this.state.code) {
+            this.setState({
+                code
+            });
+        }
     }
 
     render() {
-        const content = this.props.file.get('content');
         this.options.readOnly = this.state.readOnly;
 
         return <div>
@@ -48,7 +58,7 @@ export default class extends PureComponent {
                         </Button>
                       </Col>
                   </div>
-                  <ReactCodemirror value={content} options={this.options} className={classname(this.state.readOnly ? 'readonly' : '')}/>
+                  <ReactCodemirror onChange={this.updateCode} value={this.state.code} options={this.options} className={classname(this.state.readOnly ? 'readonly' : '')}/>
                </div>
     }
 
@@ -57,6 +67,12 @@ export default class extends PureComponent {
         this.setState({
             readOnly: state
         });
+    }
+
+    updateCode(newCode) {
+        this.setState({
+            code: newCode
+        })
     }
 }
 

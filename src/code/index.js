@@ -1,3 +1,6 @@
+/**
+ * mock js and java file content.
+ */
 const js = `import isPlainObject from 'lodash/isPlainObject'
 import $$observable from 'symbol-observable'
 
@@ -321,7 +324,12 @@ public abstract class Store<A extends Action, S extends State> {
     }
 }`;
 
+const jsBak = js;
+const javaBak = java;
+
 export default {
     js,
-    java
+    java,
+    jsBak,
+    javaBak
 }
