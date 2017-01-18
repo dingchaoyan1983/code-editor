@@ -42,7 +42,10 @@ export default class extends PureComponent {
         return <div>
                   <div className="clearfix editor-toolbar__wrapper">
                       <Col sm={3} smOffset={9} className="editor-toolbar">
-                        <Button bsSize="xsmall" bsStyle="success" onClick={this.onClick}>{this.state.readOnly ? MODIFY : SAVE}</Button>
+                        <Button bsSize="xs" bsStyle="primary" onClick={this.onClick}>
+                            <i className={classname('icon', this.state.readOnly ? 'icon-pencil' : 'icon-floppy-disk')}/>
+                            { this.state.readOnly ? MODIFY : SAVE }
+                        </Button>
                       </Col>
                   </div>
                   <ReactCodemirror value={content} options={this.options} className={classname(this.state.readOnly ? 'readonly' : '')}/>
