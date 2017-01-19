@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'code-editor';
-  src:  url('fonts/code-editor.eot?8fazyk');
-  src:  url('fonts/code-editor.eot?8fazyk#iefix') format('embedded-opentype'),
-    url('fonts/code-editor.ttf?8fazyk') format('truetype'),
-    url('fonts/code-editor.woff?8fazyk') format('woff'),
-    url('fonts/code-editor.svg?8fazyk#code-editor') format('svg');
+  src:  url('fonts/code-editor.eot?4xcxz3');
+  src:  url('fonts/code-editor.eot?4xcxz3#iefix') format('embedded-opentype'),
+    url('fonts/code-editor.ttf?4xcxz3') format('truetype'),
+    url('fonts/code-editor.woff?4xcxz3') format('woff'),
+    url('fonts/code-editor.svg?4xcxz3#code-editor') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -32,6 +32,9 @@
 }
 .icon-file-text:before {
   content: "\e926";
+}
+.icon-copy:before {
+  content: "\e92c";
 }
 .icon-folder:before {
   content: "\e92f";

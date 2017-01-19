@@ -59,7 +59,7 @@ export default class extends PureComponent {
                   <div className="clearfix editor-toolbar__wrapper">
                       <Col sm={3} smOffset={9} className="editor-toolbar">
                         <Button bsSize="xs" bsStyle="primary" onClick={this.showDiff} className="code-editor__diffbtn">
-                            <i className={classname('icon',  'icon-pencil')}/>
+                            <i className="icon icon-copy"/>
                             { VIEW_DIFF }
                         </Button>
                         <Button bsSize="xs" bsStyle="primary" onClick={this.onClick}>
