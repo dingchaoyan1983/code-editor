@@ -37,6 +37,17 @@ export default function() {
         ];
     }, DELAY);
 
+    this.get('/api/file/history', function(req) {
+         const {extname = '.js'} = req.queryParams;
+         const content = generator.fileHistory(extname.toLowerCase());
+
+         return [
+            200,
+            {'content-type': 'application/json'},
+            JSON.stringify({data: {code: content , extname}})
+        ];
+    })
+
     this.put('/api/projects/:projectId/folders/:folderId/files/:fileId', function(req, res) {
         const {extname, code} = req.requestBody;
 
@@ -61,5 +72,6 @@ export default function() {
             {'content-type': 'application/json'},
             JSON.stringify({data: {code, extname}})
         ];
-    }, DELAY)
+    }, DELAY);
 }
+

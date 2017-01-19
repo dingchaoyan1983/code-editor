@@ -90,10 +90,25 @@ function modifyCode({extname = '',  code: codeContent = ''}) {
     }
 }
 
+function fileHistory(extname) {
+    let content = '';
+
+    if(extname === `.${EXTENTION_JAVA}`) {
+          content = code.javaBak;
+    }else if (extname === `.${EXTENTOION_JAVASCRIPT}`) {
+        content = code.jsBak;
+    } else {
+        content = '';
+    }
+
+    return content;
+}
+
 export default {
     project,
     projectList,
     folderList,
     fileContent,
-    modifyCode
+    modifyCode,
+    fileHistory
 }

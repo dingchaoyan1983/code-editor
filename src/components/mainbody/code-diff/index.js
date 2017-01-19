@@ -8,7 +8,7 @@ import 'codemirror/addon/merge/merge.css';
 
 const { findDOMNode } = ReactDOM;
 
-export default class MergeView extends React.PureComponent {
+export default class MergeView extends React.Component {
     constructor(props, context) {
         super(props, context);
     }
@@ -28,5 +28,19 @@ export default class MergeView extends React.PureComponent {
             readOnly: true,
             revertButtons: false
         });
+    }
+
+    shouldComponentUpdate() {
+        return false;
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.prev !== this.props.prev) {
+            this.mergeView.left.orig.setValue(nextProps.prev);
+        }
+
+        if (nextProps.curr !== this.props.curr) {
+             this.mergeView.edit.setValue(nextProps.curr);
+        }
     }
 }

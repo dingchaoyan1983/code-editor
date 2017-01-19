@@ -39,6 +39,7 @@ export default class extends PureComponent {
         this.updateCode = this.updateCode.bind(this);
         this.showDiff = this.showDiff.bind(this);
         this.hideDiff = this.hideDiff.bind(this);
+        this.loadHistory = this.loadHistory.bind(this);
     }
 
     componentWillReceiveProps(props) {
@@ -54,22 +55,10 @@ export default class extends PureComponent {
     render() {
         this.options.readOnly = this.state.readOnly;
 
-        let modal = <Modal.Dialog dialogClassName="diff-view__modal">
-                        <Modal.Header>
-                            <Modal.Title>对比</Modal.Title>
-                        </Modal.Header>
-                        <Modal.Body>
-                            <CodeDiff curr={this.state.code} prev={''}/>
-                        </Modal.Body>
-                        <Modal.Footer>
-                            <Button onClick={this.hideDiff}>Close</Button>
-                        </Modal.Footer>
-                    </Modal.Dialog>
-
         return <div>
                   <div className="clearfix editor-toolbar__wrapper">
                       <Col sm={3} smOffset={9} className="editor-toolbar">
-                        <Button bsSize="xs" bsStyle="primary" onClick={this.showDiff}>
+                        <Button bsSize="xs" bsStyle="primary" onClick={this.showDiff} className="code-editor__diffbtn">
                             <i className={classname('icon',  'icon-pencil')}/>
                             { VIEW_DIFF }
                         </Button>
@@ -80,9 +69,17 @@ export default class extends PureComponent {
                       </Col>
                   </div>
                   <ReactCodemirror onChange={this.updateCode} value={this.state.code} options={this.options} className={classname(this.state.readOnly ? 'readonly' : '')}/>
-                  {
-                      this.state.showDiff ? modal : null
-                  }
+                  <Modal dialogClassName="diff-view__modal" show={this.state.showDiff} onEntered={this.loadHistory}>
+                        <Modal.Header closeButton={true} onHide={this.hideDiff}>
+                            <Modal.Title>对比</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>
+                            <CodeDiff curr={this.state.code} prev={this.props.file.get('history')}/>
+                        </Modal.Body>
+                        <Modal.Footer>
+                            <Button onClick={this.hideDiff}>Close</Button>
+                        </Modal.Footer>
+                    </Modal>
                </div>
     }
 
@@ -116,6 +113,10 @@ export default class extends PureComponent {
         this.setState({
             showDiff: false
         });
+    }
+
+    loadHistory() {
+        this.props.loadHistory(this.props.file.get('extname'))
     }
 }
 

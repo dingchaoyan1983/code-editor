@@ -2,7 +2,8 @@ import Immutable from 'immutable';
 
 const initState = {
     content: '',
-    extname: ''
+    extname: '',
+    history: ''
 };
 
 export function loadContent(extname) {
@@ -27,7 +28,17 @@ export function modifyContent(extname, code) {
     }
 }
 
+export function loadHistory(extname) {
+    return {
+        API_CALL: true,
+        url: `/api/file/history`,
+        data: { extname },
+        types: [,LOAD_HISTORY,]
+    }
+}
+
 const LOAD_SUCC = 'file/load_succ';
+const LOAD_HISTORY = 'file/load_history';
 
 export default function(state = Immutable.fromJS(initState), action) {
     switch(action.type) {
@@ -38,6 +49,8 @@ export default function(state = Immutable.fromJS(initState), action) {
                         state.set('extname', action.payload.extname);
                         return state;
                    });
+        case LOAD_HISTORY:
+            return state.set('history', action.payload.code);
         default:
             return state;
     }
