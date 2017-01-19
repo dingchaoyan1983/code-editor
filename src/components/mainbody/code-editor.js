@@ -106,8 +106,7 @@ export default class extends PureComponent {
     showDiff() {
         this.setState({
             showDiff: true
-        });
-        this.loadHistory();
+        }, () => this.loadHistory());
     }
 
     hideDiff() {
