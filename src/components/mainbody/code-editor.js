@@ -69,7 +69,7 @@ export default class extends PureComponent {
                       </Col>
                   </div>
                   <ReactCodemirror onChange={this.updateCode} value={this.state.code} options={this.options} className={classname(this.state.readOnly ? 'readonly' : '')}/>
-                  <Modal dialogClassName="diff-view__modal" show={this.state.showDiff} onEntered={this.loadHistory}>
+                  <Modal dialogClassName="diff-view__modal" animation={false} show={this.state.showDiff}>
                         <Modal.Header closeButton={true} onHide={this.hideDiff}>
                             <Modal.Title>对比</Modal.Title>
                         </Modal.Header>
@@ -107,6 +107,7 @@ export default class extends PureComponent {
         this.setState({
             showDiff: true
         });
+        this.loadHistory();
     }
 
     hideDiff() {
@@ -116,7 +117,7 @@ export default class extends PureComponent {
     }
 
     loadHistory() {
-        this.props.loadHistory(this.props.file.get('extname'))
+        this.props.loadHistory(this.props.file.get('extname'));
     }
 }
 
